@@ -7,5 +7,6 @@ router.post("/devices", deviceController.registerDevice);
 router.get("/devices", deviceController.getDevices);
 router.get("/devices/:id", deviceController.getDevice);
 router.post("/devices/:id/heartbeat",deviceController.recordHeartbeat);
+router.get("/summary", deviceController.getSummary);
 
 module.exports = router;

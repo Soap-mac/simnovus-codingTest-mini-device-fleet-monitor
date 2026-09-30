@@ -85,9 +85,22 @@ function recordHeartbeat(req, res) {
     }
 }
 
+function getSummary(req, res) {
+    try {
+        const summary = deviceService.getSummary();
+
+        return res.status(200).json(summary);
+    } catch (error) {
+        return res.status(500).json({
+            error: "Internal server error",
+        });
+    }
+}
+
 module.exports = {
     registerDevice,
     getDevices,
     getDevice,
     recordHeartbeat,
+    getSummary,
 };
