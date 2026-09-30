@@ -1,13 +1,23 @@
-const DEVICE_STATUS = {
-  ONLINE: 'ONLINE',
-  OFFLINE: 'OFFLINE',
-  MAINTENANCE: 'MAINTENANCE',
-};
+const OFFLINE_TIMEOUT_MS = 30 * 1000;
 
-function evaluateStatus(lastHeartbeat, thresholdMs = 30000) {
-  if (!lastHeartbeat) return DEVICE_STATUS.OFFLINE;
-  const diff = Date.now() - new Date(lastHeartbeat).getTime();
-  return diff > thresholdMs ? DEVICE_STATUS.OFFLINE : DEVICE_STATUS.ONLINE;
+function getDeviceStatus(lastHeartbeat, now = new Date()) {
+    if (!lastHeartbeat) {
+        return "OFFLINE";
+    }
+
+    const heartbeatTime = new Date(lastHeartbeat).getTime();
+    const currentTime = new Date(now).getTime();
+
+    const heartbeatAge = currentTime - heartbeatTime;
+
+    if (heartbeatAge <= OFFLINE_TIMEOUT_MS) {
+        return "ONLINE";
+    }
+
+    return "OFFLINE";
 }
 
-module.exports = { DEVICE_STATUS, evaluateStatus };
+module.exports = {
+    getDeviceStatus,
+    OFFLINE_TIMEOUT_MS,
+};

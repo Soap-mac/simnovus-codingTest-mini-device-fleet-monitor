@@ -59,8 +59,35 @@ function getDevice(req, res) {
     }
 }
 
+function recordHeartbeat(req, res) {
+    try {
+        const { timestamp } = req.body;
+
+        if (!timestamp) {
+            return res.status(400).json({
+                error: "Timestamp is required",
+            });
+        }
+
+        const device = deviceService.recordHeartbeat(
+            req.params.id,
+            timestamp
+        );
+
+        return res.status(200).json({
+            message: "Heartbeat received",
+            device: deviceService.formatDevice(device),
+        });
+    } catch (error) {
+        return res.status(error.statusCode || 500).json({
+            error: error.message || "Internal server error",
+        });
+    }
+}
+
 module.exports = {
     registerDevice,
     getDevices,
     getDevice,
+    recordHeartbeat,
 };
