@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    />
+    <title>Device Fleet Monitor</title>
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+    <main>
+        <header class="header">
+            <h1>Device Fleet Monitor</h1>
+            <p>Real-time overview of your registered device fleet.</p>
+        </header>
+
+        <section class="summary-grid">
+            <div class="summary-card">
+                <h2 id="totalCount">0</h2>
+                <p>Total Devices</p>
+            </div>
+
+            <div class="summary-card">
+                <h2 id="onlineCount">0</h2>
+                <p>Online</p>
+            </div>
+
+            <div class="summary-card">
+                <h2 id="offlineCount">0</h2>
+                <p>Offline</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2>Devices</h2>
+            </div>
+
+            <div id="deviceList" class="device-list">
+                <p>Loading devices...</p>
+            </div>
+
+            <p id="lastUpdated" class="last-updated">
+                Last updated: --
+            </p>
+        </section>
+    </main>
+<script src="/app.js"></script>
+</body>
+</html>
