@@ -135,7 +135,7 @@ The simulator uses Node's built-in `fetch`, so use a modern Node.js version with
 Clone the repository and enter the project directory:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Soap-mac/simnovus-codingTest-mini-device-fleet-monitor.git
 cd mini-device-fleet-monitor
 ```
 
